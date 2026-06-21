@@ -1,0 +1,17 @@
+1.1 Purpose
+The purpose of this solicitation is cybersecurity modernization support services.
+
+1.2 Background
+The Department of Homeland Security requires continuous SOC modernization,
+FedRAMP aligned cloud operations, and secure proposal support.
+
+3.1 Technical Approach
+The contractor shall provide 24/7 SOC monitoring services, automated triage,
+incident response, and monthly metrics reporting.
+
+C.3.1 Requirement
+The contractor shall provide continuous monitoring and comply with NIST SP 800-171.
+
+M.1 Evaluation
+Technical approach is weighted 40 percent. Past performance is weighted 30 percent.
+Price is weighted 30 percent.

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BidIntel AI</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="cui">CONTROLLED UNCLASSIFIED INFORMATION // AUTHORIZED USE ONLY</div>
+    <section id="login" class="login">
+      <div class="login-left">
+        <div class="brand"><span class="logo">BI</span><div><h1>BidIntel AI</h1><p>CONTRACT BIDDING COMMAND CENTER</p></div></div>
+        <h2>Win more federal work with <span>capture intelligence.</span></h2>
+        <p class="lead">One secure workspace for solicitations, past performance, compliance, and bid/no-bid decisions - grounded in your own knowledge base.</p>
+        <ul class="proof"><li>RAG retrieval across every solicitation and proposal artifact</li><li>Automated compliance matrices and bid scoring</li><li>RBAC, tenant filtering, guardrails, and audit logging</li></ul>
+      </div>
+      <form class="login-card" id="login-form">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h2>Sign in to BidIntel AI</h2>
+        <p>Use your organization's single sign-on. Your role and document access are provisioned automatically.</p>
+        <button class="primary" type="submit">Continue with AWS IAM Identity Center -></button>
+        <button class="secondary" type="button">Continue with Microsoft Entra ID</button>
+        <label>Work email<input value="adam.davis@bidintel.ai" /></label>
+        <label>Password<input value="••••••••••••" /></label>
+        <button class="dark" type="submit">Sign in</button>
+        <div class="notice">Authorized use only. Activity is monitored and logged.</div>
+      </form>
+    </section>
+    <section id="app" class="app hidden">
+      <aside class="sidebar">
+        <div class="brand small"><span class="logo">BI</span><div><h1>BidIntel AI</h1><p>Command Center</p></div></div>
+        <nav id="nav"></nav>
+      </aside>
+      <main class="main">
+        <header class="topbar"><div id="crumb">Home / Dashboard</div><input placeholder="Search opportunities, documents, people..." /><div class="avatar">AD</div><strong>Adam Davis</strong></header>
+        <div id="view"></div>
+      </main>
+    </section>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+1.1 Purpose
+This solicitation requests cybersecurity modernization support for a federal agency operations center.
+
+3.1 Technical Approach
+The contractor shall provide continuous 24/7 SOC monitoring, automated incident triage, monthly metrics reporting, and an escalation model from Tier 1 through Tier 3.
+
+3.2 Staffing
+The contractor shall provide cleared cybersecurity analysts within 30 days of award.
+
+M.1 Evaluation Factors
+Technical approach is weighted 40 percent. Past performance is weighted 30 percent. Price is weighted 30 percent.
+
+M.2 Risk Factors
+Transition timeline, staffing availability, and FedRAMP authorization status are evaluated risks.

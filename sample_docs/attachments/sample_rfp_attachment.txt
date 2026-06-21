@@ -1,0 +1,4 @@
+1.1 Purpose
+This attached RFP asks for cybersecurity modernization.
+3.1 Technical Approach
+The contractor shall provide SOC monitoring.

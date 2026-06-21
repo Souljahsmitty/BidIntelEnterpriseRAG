@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    environment:
+      USE_REAL_PGVECTOR: "true"
+      USE_BEDROCK: "false"
+      DATABASE_URL: postgresql://bidintel:bidintel_dev_password@postgres:5432/bidintel
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python - <<'PY'\nimport urllib.request\nurllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)\nPY"]
+      interval: 10s
+      timeout: 8s
+      retries: 12
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: bidintel
+      POSTGRES_USER: bidintel
+      POSTGRES_PASSWORD: bidintel_dev_password
+    ports:
+      - "56550:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bidintel -d bidintel"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - bidintel_ch29_pgdata:/var/lib/postgresql/data
+
+volumes:
+  bidintel_ch29_pgdata:

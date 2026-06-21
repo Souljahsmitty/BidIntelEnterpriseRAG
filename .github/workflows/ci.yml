@@ -1,0 +1,36 @@
+name: bidintel-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  backend-security-smoke:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_DB: bidintel
+          POSTGRES_USER: bidintel
+          POSTGRES_PASSWORD: bidintel_dev_password
+        ports:
+          - 56550:5432
+        options: >-
+          --health-cmd "pg_isready -U bidintel -d bidintel"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - run: python -m py_compile backend/app/main.py backend/app/workflows/ingest_graph.py backend/app/services/bedrock_runtime.py
+      - run: pytest tests/test_enterprise_hardening.py -v
+        env:
+          USE_REAL_PGVECTOR: "false"
+          USE_BEDROCK: "false"
+          DATABASE_URL: postgresql://bidintel:bidintel_dev_password@localhost:56550/bidintel
