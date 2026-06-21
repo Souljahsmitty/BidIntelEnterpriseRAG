@@ -79,6 +79,7 @@ python3 -m pytest tests/test_enterprise_hardening.py -v
 See:
 
 ```text
+docs/BidIntelEnterpriseRAG_Install_Companion.pdf
 docs/REVIEWER_PROOF.md
 docs/enterprise/proposal_ops_local_to_production.md
 docs/enterprise/proposal_ops_schema.sql
