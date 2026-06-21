@@ -1,8 +1,8 @@
 # BidIntel Enterprise RAG Verification Summary
 
-This clean reviewer package was verified on 2026-06-20.
+This clean repo package was verified on 2026-06-20.
 
-## Reviewer Path
+## Verification Path
 
 ```bash
 docker compose up --build -d
@@ -19,7 +19,7 @@ Health endpoint: PASS
 Mode: REAL LOCAL APP + REAL POSTGRESQL/PGVECTOR
 Database status: connected
 Indexes: chunks_embedding_hnsw_idx, chunks_pkey, chunks_tenant_idx
-Reviewer smoke: PASS
+Smoke test: PASS
 Full pipeline proof: PASS
 ```
 

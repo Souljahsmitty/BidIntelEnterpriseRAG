@@ -6,7 +6,7 @@ run guarded RAG, retrieve citations, score bid/no-bid risk, and manage proposal
 operations such as compliance matrices, requirement traceability, content reuse,
 review issues, and proposal health.
 
-## Quick Reviewer Path
+## Quick Run Path
 
 If Docker is available:
 
@@ -80,7 +80,7 @@ See:
 
 ```text
 docs/BidIntelEnterpriseRAG_Install_Companion.pdf
-docs/REVIEWER_PROOF.md
+docs/VERIFICATION_GUIDE.md
 docs/enterprise/proposal_ops_local_to_production.md
 docs/enterprise/proposal_ops_schema.sql
 ```

@@ -1,4 +1,4 @@
-# Hiring Manager Checklist
+# Install And Verification Checklist
 
 This checklist is the fast review path for BidIntel.
 
@@ -63,7 +63,7 @@ Expected proof:
 }
 ```
 
-## 4. Run Reviewer Smoke Test
+## 4. Run Smoke Test
 
 ```bash
 python3 scripts/verify/reviewer_smoke.py
@@ -79,7 +79,7 @@ prompt injection guard: PASS
 bid score from RAG evidence: PASS
 proposal workspace API: PASS
 proposal health dashboard API: PASS
-BidIntel reviewer smoke test complete.
+BidIntel smoke test complete.
 ```
 
 ## 5. Run Test Suite

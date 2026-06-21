@@ -1,6 +1,6 @@
-# BidIntel Reviewer Proof
+# BidIntel Verification Guide
 
-This file is for a hiring manager or technical reviewer. It answers: what works, how to run it, and what proof to expect.
+This guide explains what works, how to run it, and what proof to expect.
 
 ## Fastest Docker Path
 
@@ -30,7 +30,7 @@ RAG ask endpoint: PASS
 prompt injection guard: PASS
 bid score from RAG evidence: PASS
 proposal health dashboard API: PASS
-BidIntel reviewer smoke test complete.
+BidIntel smoke test complete.
 FULL PIPELINE PROOF COMPLETE: PASS
 ```
 
