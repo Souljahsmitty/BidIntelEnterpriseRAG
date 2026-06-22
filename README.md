@@ -8,6 +8,12 @@ review issues, and proposal health.
 
 ## Quick Run Path
 
+For backend proof commands, start here:
+
+```text
+docs/BACKEND_VERIFICATION_COMMANDS.md
+```
+
 If Docker is available:
 
 ```bash
@@ -23,7 +29,7 @@ http://127.0.0.1:8000
 In another terminal:
 
 ```bash
-python3 scripts/verify/reviewer_smoke.py
+BASE_URL=http://127.0.0.1:8000 ./scripts/verify/reviewer_smoke.sh
 BASE_URL=http://127.0.0.1:8000 python3 scripts/verify/full_pipeline_proof.py
 ```
 
@@ -38,24 +44,26 @@ proposal health dashboard API: PASS
 FULL PIPELINE PROOF COMPLETE: PASS
 ```
 
-## Local Python Path
+## Local Python Path With Real pgvector
 
 ```bash
-python3.12 -m venv .venv
+docker compose up -d postgres
+python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-export USE_REAL_PGVECTOR=false
+export USE_REAL_PGVECTOR=true
 export USE_BEDROCK=false
-python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+export DATABASE_URL='postgresql://bidintel:bidintel_dev_password@127.0.0.1:56550/bidintel'
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8777
 ```
 
 In another terminal:
 
 ```bash
 source .venv/bin/activate
-python3 scripts/verify/reviewer_smoke.py
-BASE_URL=http://127.0.0.1:8000 python3 scripts/verify/full_pipeline_proof.py
+BASE_URL=http://127.0.0.1:8777 python3 scripts/verify/reviewer_smoke.py
+BASE_URL=http://127.0.0.1:8777 python3 scripts/verify/full_pipeline_proof.py
 python3 -m pytest tests/test_enterprise_hardening.py -v
 ```
 
@@ -80,6 +88,7 @@ See:
 
 ```text
 docs/BidIntelEnterpriseRAG_Install_Companion.pdf
+docs/BACKEND_VERIFICATION_COMMANDS.md
 docs/VERIFICATION_GUIDE.md
 docs/enterprise/proposal_ops_local_to_production.md
 docs/enterprise/proposal_ops_schema.sql

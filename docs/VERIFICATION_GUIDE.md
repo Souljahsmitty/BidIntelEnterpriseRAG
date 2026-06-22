@@ -2,6 +2,12 @@
 
 This guide explains what works, how to run it, and what proof to expect.
 
+For the complete pasteable backend command list, use:
+
+```text
+docs/BACKEND_VERIFICATION_COMMANDS.md
+```
+
 ## Fastest Docker Path
 
 ```bash
@@ -17,7 +23,7 @@ http://127.0.0.1:8000
 Run the smoke test in another terminal:
 
 ```bash
-python3 scripts/verify/reviewer_smoke.py
+BASE_URL=http://127.0.0.1:8000 ./scripts/verify/reviewer_smoke.sh
 BASE_URL=http://127.0.0.1:8000 python3 scripts/verify/full_pipeline_proof.py
 ```
 
@@ -34,26 +40,30 @@ BidIntel smoke test complete.
 FULL PIPELINE PROOF COMPLETE: PASS
 ```
 
-## Local Python Path
+## Local Python Path With Real pgvector
 
-Use this if you do not want Docker.
+Use this if you want to run FastAPI directly from Python while still proving
+PostgreSQL/pgvector rows and the HNSW index. Docker is used only for the
+database.
 
 ```bash
-python3.12 -m venv .venv
+docker compose up -d postgres
+python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-export USE_REAL_PGVECTOR=false
+export USE_REAL_PGVECTOR=true
 export USE_BEDROCK=false
-python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+export DATABASE_URL='postgresql://bidintel:bidintel_dev_password@127.0.0.1:56550/bidintel'
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8777
 ```
 
 Then in another terminal:
 
 ```bash
 source .venv/bin/activate
-python3 scripts/verify/reviewer_smoke.py
-BASE_URL=http://127.0.0.1:8000 python3 scripts/verify/full_pipeline_proof.py
+BASE_URL=http://127.0.0.1:8777 python3 scripts/verify/reviewer_smoke.py
+BASE_URL=http://127.0.0.1:8777 python3 scripts/verify/full_pipeline_proof.py
 python3 -m pytest tests/test_enterprise_hardening.py -v
 ```
 
